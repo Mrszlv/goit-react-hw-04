@@ -3,9 +3,7 @@ const ImageCard = ({ image }) => {
 
   return (
     <li>
-      <div>
-        <img src={urls.smal} alt={alt_description} />
-      </div>
+      <img src={urls.smal} alt={alt_description} />
     </li>
   );
 };

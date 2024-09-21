@@ -18,12 +18,14 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    if (!query) return;
+
     const getImages = async () => {
       setLoading(true);
       setError(false);
       try {
         const data = await fetchImages(query, page);
-        setImages((prev) => [...prev], ...data.results);
+        setImages((prev) => [...prev, ...data.results]);
       } catch {
         setError("Failed to load images");
       } finally {

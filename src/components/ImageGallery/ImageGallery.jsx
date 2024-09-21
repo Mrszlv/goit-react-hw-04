@@ -3,11 +3,9 @@ import ImageCard from "../ImageCard/ImageCard";
 const ImageGallery = ({ images }) => {
   return (
     <ul>
-      {images.map((image) => {
-        <li key={image.id}>
-          <ImageCard url={image.urls.smal} />
-        </li>;
-      })}
+      {images.map((image) => (
+        <ImageCard image={image} key={image.id} />
+      ))}
     </ul>
   );
 };

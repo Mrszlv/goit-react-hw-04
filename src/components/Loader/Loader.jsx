@@ -1,8 +1,8 @@
 import { ThreeDots } from "react-loader-spinner";
-
+import s from "./Loader.module.css";
 const Loader = () => (
-  <div>
-    <ThreeDots height="80" width="80" color="gray" ariaLabel="loading" />
+  <div className={s.load}>
+    <ThreeDots height="60" width="80" color="gray" ariaLabel="loading" />
   </div>
 );
 

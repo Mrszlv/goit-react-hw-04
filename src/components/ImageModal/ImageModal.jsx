@@ -33,9 +33,19 @@ const ImageModal = ({ image, onClose }) => {
             className={s.img}
           />
           <div className={s.infoText}>
-            <p className={s.text}>Author: {image.user.name}</p>
-            <p className={s.text}>Likes: {image.likes}</p>
-            <p className={s.text}>Deskription: {image.alt_description}</p>
+            <p className={s.text}>
+              {" "}
+              <span className={s.span}>Author:</span> {image.user.name}
+            </p>
+            <p className={s.text}>
+              {" "}
+              <span className={s.span}>Likes:</span> {image.likes}
+            </p>
+            <p className={s.text}>
+              {" "}
+              <span className={s.span}>Deskription:</span>{" "}
+              {image.alt_description}
+            </p>
           </div>
         </div>
       )}

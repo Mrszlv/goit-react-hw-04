@@ -6,7 +6,7 @@ export const fetchImages = async (query, page = 1) => {
       client_id: "_FGiO_vXXvx1ShKCkjhTMxThVvtc1JA7tmR_UezrG3U",
       query: query,
       page: page,
-      per_page: 15,
+      per_page: 16,
     },
   });
   return response.data;

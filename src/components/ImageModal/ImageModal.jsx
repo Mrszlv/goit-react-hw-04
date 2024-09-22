@@ -1,26 +1,42 @@
 import Modal from "react-modal";
 import s from "./ImageModal.module.css";
+import { useEffect } from "react";
 
 Modal.setAppElement("#root");
 
 const ImageModal = ({ image, onClose }) => {
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+
   return (
     <Modal
       isOpen={!!image}
       onRequestClose={onClose}
       contentLabel="Image Modal"
       className={s.modal}
+      overlayClassName={s.overlay}
     >
       {image && (
-        <div>
+        <div className={s.wrapp}>
           <img
             src={image.urls.regular}
             alt={image.alt_description}
             className={s.img}
           />
-          <p className={s.text}>Author: {image.user.name}</p>
-          <p className={s.text}>Likes: {image.likes}</p>
-          <p className={s.text}>Deskription: {image.alt_description}</p>
+          <div className={s.infoText}>
+            <p className={s.text}>Author: {image.user.name}</p>
+            <p className={s.text}>Likes: {image.likes}</p>
+            <p className={s.text}>Deskription: {image.alt_description}</p>
+          </div>
         </div>
       )}
     </Modal>

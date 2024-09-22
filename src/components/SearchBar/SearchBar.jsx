@@ -1,5 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import toast, { Toaster } from "react-hot-toast";
+import s from "./SearchBar.module.css";
+import { MdAddPhotoAlternate } from "react-icons/md";
 
 const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
@@ -13,17 +15,25 @@ const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <header>
+    <header className={s.header}>
+      <div className={s.container}>
+        <MdAddPhotoAlternate className={s.icon} />
+        <h2 className={s.title}>GALLERY</h2>
+      </div>
+
       <Formik initialValues={{ query: "" }} onSubmit={handleSubmit}>
-        <Form>
+        <Form className={s.form}>
           <Field
             name="query"
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="Search images and photos"
+            placeholder="Enter search photo and image..."
+            className={s.input}
           />
-          <button type="submit">Search</button>
+          <button type="submit" className={s.btn}>
+            Search
+          </button>
         </Form>
       </Formik>
       <Toaster />

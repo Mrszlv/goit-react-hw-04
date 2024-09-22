@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from "formik";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
@@ -15,19 +15,18 @@ const SearchBar = ({ onSubmit }) => {
   return (
     <header>
       <Formik initialValues={{ query: "" }} onSubmit={handleSubmit}>
-        {() => (
-          <Form>
-            <Field
-              name="query"
-              type="text"
-              autoComplete="off"
-              autoFocus
-              placeholder="Search images and photos"
-            />
-            <button type="submit">Search</button>
-          </Form>
-        )}
+        <Form>
+          <Field
+            name="query"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+          />
+          <button type="submit">Search</button>
+        </Form>
       </Formik>
+      <Toaster />
     </header>
   );
 };

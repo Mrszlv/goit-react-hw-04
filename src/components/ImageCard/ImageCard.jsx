@@ -1,11 +1,9 @@
-const ImageCard = ({ image }) => {
-  const { urls, alt_description } = image;
+import s from "./ImageCard.module.css";
 
-  return (
-    <li>
-      <img src={urls.smal} alt={alt_description} />
-    </li>
-  );
-};
+const ImageCard = ({ image, onClick }) => (
+  <div onClick={() => onClick(image)}>
+    <img src={image.urls.small} alt={image.alt_description} className={s.img} />
+  </div>
+);
 
 export default ImageCard;

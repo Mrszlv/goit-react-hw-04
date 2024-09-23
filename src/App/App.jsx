@@ -14,7 +14,6 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(null);
   const [modaImage, setModalImage] = useState(null);
 
   useEffect(() => {
@@ -47,7 +46,6 @@ const App = () => {
 
   const handleClick = (image) => {
     setModalImage(image);
-    setShowModal(true);
   };
 
   const loadMore = () => {
@@ -55,7 +53,6 @@ const App = () => {
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
     setModalImage(null);
   };
 
@@ -66,8 +63,7 @@ const App = () => {
       <ImageGallery images={images} onClick={handleClick} />
       {loading && <Loader />}
       {images.length > 0 && !loading && <LoadMoreBtn loadMore={loadMore} />}
-      {showModal && <ImageModal />}
-      {showModal && <ImageModal image={modaImage} onClose={handleCloseModal} />}
+      <ImageModal image={modaImage} onClose={handleCloseModal} />
     </div>
   );
 };
